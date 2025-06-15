@@ -1,0 +1,141 @@
+/* rajouter la partie mobile et talette à la fin*/
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --main-bg-color: #c80000;
+  --secondary-bg-color: #666666;
+  --border-color: #cccccc;
+  --text-black: rgb(21, 21, 21);
+  --bg-white: white;
+}
+
+body {
+  font-family: "Raleway", serif;
+}
+
+header {
+  color: var(--bg-white);
+}
+
+.header_title-container {
+  background: var(--main-bg-color);
+  display: flex;
+  padding: 1.5em;
+  align-items: flex-end;
+}
+
+.header_title {
+  font-size: 2.5em;
+}
+
+.header__subtitle {
+  font-size: 1.5em;
+  margin-left: 0.7em;
+  font-style: italic;
+}
+
+.header_title,
+.header__subtitle {
+  font-weight: bold;
+}
+
+.header_theme-container {
+  background: var(--secondary-bg-color);
+  padding: 0.8em;
+  text-align: center;
+}
+
+.header_theme-title {
+  font-size: 1.8em;
+}
+
+.header_theme-title-franchise {
+  font-weight: bold;
+}
+
+.header_theme-title,
+.header_theme-title-franchise {
+  font-style: italic;
+}
+
+.container {
+  margin: 2em auto;
+  max-width: 40%;
+}
+
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 10px;
+  column-gap: 10px;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.product-list_item {
+  position: relative;
+  border: var(--border-color) 0.3em solid;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 100%;
+  height: 100%;
+}
+
+.product-list_item img {
+  max-width: 100%;
+}
+
+.product-list_item h3 {
+  color: var(--secondary-bg-color);
+  font-size: 0.7em;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-bottom: var(--secondary-bg-color) solid 2px;
+  padding: 0.4em;
+  letter-spacing: 0.5px;
+  margin: 0.6em;
+  text-align: center;
+}
+
+.product-list_item h2 {
+  font-weight: bold;
+  font-size: 1em;
+  text-align: center;
+  line-height: 1.2;
+  letter-spacing: 0.2px;
+}
+
+.product-list_item p {
+  font-size: 0.8em;
+  font-weight: 500;
+  margin: 0.5em;
+  text-align: center;
+  padding-bottom: 0.3em;
+}
+
+.product-list__item-add-to-cart {
+  background-color: var(--main-bg-color);
+  color: var(--bg-white);
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8em;
+  padding: 1em;
+  text-decoration: none;
+  margin-top: auto;
+}
+
+.product-list__item-price {
+  font-weight: bold;
+}
+
+.product-list__item-price-strike {
+  font-size: smaller;
+  font-weight: normal;
+  margin-left: 0.5em;
+}
