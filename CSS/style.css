@@ -124,10 +124,25 @@ header {
   color: var(--bg-white);
   display: flex;
   justify-content: space-between;
-  font-size: 0.8em;
+  font-size: 1em;
   padding: 1em;
   text-decoration: none;
   margin-top: auto;
+}
+
+.product-list__item-soldes {
+  height: 4.5em;
+  background-color: var(--secondary-bg-color);
+  border: 5px solid var(--border-color);
+  border-radius: 50%;
+  color: var(--bg-white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 900;
+  position: absolute;
+  top: 4%;
+  right: 4%;
 }
 
 .product-list__item-price {
@@ -153,4 +168,20 @@ header {
 .cross {
   background-image: url("../../images/deco.png");
   height: 13px;
+}
+
+.sales {
+  position: fixed;
+  background-color: var(--main-bg-color);
+  color: var(--bg-white);
+  font-weight: bold;
+  text-orientation: upright;
+  text-transform: uppercase;
+  writing-mode: vertical-lr;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  letter-spacing: -0.1rem;
+  top: calc(50% - 130px / 2);
+  padding: 15px 10px;
+  font-size: 1.1em;
 }
