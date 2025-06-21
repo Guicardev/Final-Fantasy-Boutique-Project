@@ -14,21 +14,30 @@ function animateSalesBadges() {
 }
 
 // Lancer l'animation toutes les 2,5 secondes
-let salesAnimationInterval = setInterval(animateSalesBadges, 2500);
+// let salesAnimationInterval = setInterval(animateSalesBadges, 2500);
+setTimeout(() => {
+  salesAnimationInterval = setInterval(animateSalesBadges, 2500);
+}, 1000);
 
 // Pause l'animation quand l'utilisateur survole un badge
+
+let isAnimationPaused = false;
+
 soldesBadges.forEach((badge) => {
   badge.addEventListener("mouseenter", () => {
     clearInterval(salesAnimationInterval);
+    isAnimationPaused = true;
     badge.style.transform = "scale(1.05)";
   });
 
   badge.addEventListener("mouseleave", () => {
     badge.style.transform = "scale(1)";
-    // Redémarre l'animation après 1 seconde
-    setTimeout(() => {
-      salesAnimationInterval = setInterval(animateSalesBadges, 2500);
-    }, 1000);
+    if (isAnimationPaused) {
+      setTimeout(() => {
+        salesAnimationInterval = setInterval(animateSalesBadges, 2500);
+        isAnimationPaused = false;
+      }, 1000);
+    }
   });
 });
 
@@ -72,10 +81,18 @@ addToCartButtons.forEach((button) => {
 
     setTimeout(() => {
       button.style.transform = "scale(1)";
-      button.innerHTML =
-        'Ajouter au panier <span class="product-list__item-price">' +
-        button.querySelector(".product-list__item-price").textContent +
-        "</span>";
+
+      const priceSpan = button.querySelector(".product-list__item-price");
+      const priceText = priceSpan ? priceSpan.textContent : "";
+
+      // Réinitialise le contenu du bouton de manière sécurisée sans l'utilisation de inner pour éviter les faille
+      button.textContent = "Ajouter au panier ";
+
+      const newSpan = document.createElement("span");
+      newSpan.className = "product-list__item-price";
+      newSpan.textContent = priceText;
+
+      button.appendChild(newSpan);
     }, 500);
   });
 });
@@ -86,11 +103,15 @@ document.addEventListener("DOMContentLoaded", () => {
     item.style.opacity = "0";
     item.style.transform = "translateY(20px)";
 
-    setTimeout(() => {
-      item.style.opacity = "1";
-      item.style.transform = "translateY(0)";
-      item.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-    }, index * 100); // Délai progressif pour chaque produit
+    if (!item.classList.contains("animated-once")) {
+      item.classList.add("animated-once");
+
+      setTimeout(() => {
+        item.style.opacity = "1";
+        item.style.transform = "translateY(0)";
+        item.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+      }, index * 100);
+    }
   });
 });
 
